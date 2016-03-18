@@ -14,12 +14,11 @@ For Ubuntu and/or Debian that would be the package "osmctools" and "wget".
 
 ### Windows users:
 Download the repository via git clone or download the zip.
-Once unzipped/installed see "Create basic map for OsmAndMapCreator"
 
 
-# Create basic map for OsmAndMapCreator
+# Create raw address map for OsmAndMapCreator
 
-Open a terminal (linux) or a command/dox box (windows) and go to the folder where you downloaded the scripts (and .exe for windows)
+Open a terminal (linux) or a command/dos box (windows) and go to the folder where you downloaded the scripts (and .exe files for windows)
 
 Inside the directory you issue the following comand in case you want a "France" address map.
 
@@ -36,8 +35,8 @@ After some time you should have some file like france-address.osm.pbf
 
 
 # Create address map inside OsmAndMapCreator
-Make sure you have downloaded and installed OsmAndMapCreator
-Inside the script OsmAndMapCreator.sh or OsmAndMapCreator.bat make sure you change the value of the "-Xmx720M" to a value of at least 4096 like "-Xmx4096M" and preferably higher if memory allows.
+Make sure you have downloaded and installed OsmAndMapCreator.<br>
+Inside the script `OsmAndMapCreator.sh` or `OsmAndMapCreator.bat` make sure you change the value of the "-Xmx720M" to a value of at least 4096 like "-Xmx4096M" and preferably higher if memory allows.
 
 Once updated start OsmAndMapCreator. **Only(!)** set the "build address index". All the other settings need to be "unchecked".
 

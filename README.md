@@ -40,5 +40,5 @@ Inside the script `OsmAndMapCreator.sh` or `OsmAndMapCreator.bat` make sure you 
 
 Once updated start OsmAndMapCreator. **Only(!)** set the "build address index". All the other settings need to be "unchecked".
 
-Depending on the speed of your pc and your disk (traditional harddisk or SSD) this will take 30 minutes to 8 hours.
+Depending on the country size, speed of your pc and your disk (traditional harddisk or SSD) this will take 30 minutes to 8 hours.
 

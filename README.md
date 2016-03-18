@@ -32,6 +32,7 @@ Linux:
 (Important: Use lowercase characters).
 
 After some time you should have some file like france-address.osm.pbf
+*(Note that the france-latest.osm.pbf file is the orginal complete raw map downloaded from geofabrik. You can remove that one)*
 
 
 # Create address map inside OsmAndMapCreator

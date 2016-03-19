@@ -4,7 +4,7 @@ scripts to create address maps for OsmAnd
 
 # Requirements:
 ### General:
-A 64bit Operating System with at least 4-6GB memory.
+A 64-bit Operating System with at least 4-6GB memory.
 OsmAndMapCreator and a recent java version. 
 Note that you need to be on a 64bit OS and that you need a 64bit java. The memory demands are always above 1.5GB which means a 64bit java environment.
 
@@ -30,7 +30,7 @@ Linux:
 
 (Important: Use lowercase characters).
 
-After some time you should a file like france-address.osm.pbf
+After some time you should have a file like france-address.osm.pbf
 *(Note that the france-latest.osm.pbf file is the orginal complete raw map downloaded from geofabrik. You can remove that one)*
 
 

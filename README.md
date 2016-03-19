@@ -38,7 +38,8 @@ After some time you should have some file like france-address.osm.pbf
 Make sure you have downloaded and installed OsmAndMapCreator.<br>
 Inside the script `OsmAndMapCreator.sh` or `OsmAndMapCreator.bat` make sure you change the value of the "-Xmx720M" to a value of at least 4096 like "-Xmx4096M" and preferably higher if memory allows.
 
-Once updated start OsmAndMapCreator. **Only(!)** set the "build address index". All the other settings need to be "unchecked".
+Once updated start OsmAndMapCreator. **Only(!)** set the "build address index". All the other settings need to be "unchecked".<br>
+We only need these kind of address maps for the big countries which come as regional submaps. These regional submaps have addresses as well and a map part displaying those addresses. We now search using the country address map and the details are displayed via the regional map.
 
 Depending on the country size, speed of your pc and your disk (traditional harddisk or SSD) this will take 30 minutes to 8 hours.
 

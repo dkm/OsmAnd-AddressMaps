@@ -20,7 +20,7 @@ Download the repository via git clone or download the zip.
 
 Open a terminal (linux) or a command/dos box (windows) and go to the folder where you downloaded the scripts (and .exe files for windows)
 
-Inside the directory you issue the following comand in case you want a "France" address map.
+Inside the directory you issue the following command in case you want a "France" address map.
 
 Windows: 
 `create_address_rawmap.cmd france`

@@ -41,5 +41,5 @@ Inside the script `OsmAndMapCreator.sh` or `OsmAndMapCreator.bat` make sure you 
 Once the "raw" protobuf address map has been created by the scripts in the previous step, start OsmAndMapCreator.<br> **Only(!)** set the "build address index". All the other settings need to be "unchecked".<br>
 We only need these kind of address maps for the big countries which come as regional submaps. These regional submaps have addresses as well and a map part displaying those addresses. We now search using the country address map and the details are displayed via the regional map.
 
-Depending on the country size, speed of your pc and your disk (traditional harddisk or SSD) this will take 30 minutes to 8 hours.
+Depending on the country size, speed of your pc and your disk (traditional harddisk or SSD) this will take 30 minutes to 12+ hours.
 

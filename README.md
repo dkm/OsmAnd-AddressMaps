@@ -4,7 +4,7 @@ scripts to create address maps for OsmAnd
 
 # Requirements:
 ### General:
-A 64-bit Operating System with at least 4-6GB memory.
+A 64-bit Operating System with at least 6GB memory (Germany 10GB).
 OsmAndMapCreator and a recent java version. 
 Note that you need to be on a 64bit OS and that you need a 64bit java. The memory demands are always above 1.5GB which means a 64bit java environment.
 

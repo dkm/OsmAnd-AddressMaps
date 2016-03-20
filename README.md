@@ -9,7 +9,7 @@ OsmAndMapCreator and a recent java version.
 Note that you need to be on a 64bit OS and that you need a 64bit java. The memory demands are always above 1.5GB which means a 64bit java environment.
 
 ### Linux users:
-Download the necessary tools via your package manager. You need omsconvert, osmfilter and wget.
+Download the necessary tools via your package manager. You need osmconvert, osmfilter and wget.
 For Ubuntu and/or Debian that would be the package "osmctools" and "wget".
 
 ### Windows users:

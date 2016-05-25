@@ -1,6 +1,6 @@
 @echo off
 REM  hvdwolf@gmail.com, May 2016
-REM  This script downloads all roads_only maps for a certain country
+REM  This script downloads all regional roads_only maps for a certain country
 REM  and converts it into a full roads_only map for that country
 REM  and into a full address_map for that country
 

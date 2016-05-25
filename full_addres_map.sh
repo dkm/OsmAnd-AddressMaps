@@ -1,10 +1,10 @@
 #!/bin/bash
 #  hvdwolf@gmail.com, May 2016
-#  This script downloads all roads_only maps for a certain country
+#  This script downloads all regional roads_only maps for a certain country
 #  and converts it into a full roads_only map for that country
 #  and into a full address_map for that country
 
-# Requirements: awk, curl, unzip, wget and OsmAndMapCreator (newer than mid May 2016)
+# Requirements: awk, curl, grep, sed, unzip, wget and OsmAndMapCreator (newer than mid May 2016)
 
 
 URL="http://download.osmand.net/road-indexes/"

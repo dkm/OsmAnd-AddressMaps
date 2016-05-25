@@ -7,22 +7,28 @@ This is based on the new functionality in OsmAndMapCreator for versions after mi
 ### General:
 * A 64-bit Operating System with up to 6GB free memory (for Germany).
 * OsmAndMapCreator later then mid May 2016 and a recent java version. 
-* awk, curl, unzip and wget
+* awk, curl, grep, sed, unzip and wget
 
 Note that you need to be on a 64bit OS and that you need a 64bit java. The memory demands are always above 1.5GB which means a 64bit java environment.
 
 ### Linux users:
-Download the necessary tools via your package manager.
+Download the necessary tools via your package manager and OsmAndMapCreator from http://download.osmand.net/latest-night-build/.
 
 ### Windows users:
- *Not yet*
+Download OsmAndMapCreator from http://download.osmand.net/latest-night-build/.<br>
+The other tools are in the wintools folder.<br>
+*(awk, grep, sed, unzip and wget come from [GnuWin packages](http://gnuwin32.sourceforge.net/packages.html). curl comes from [curl.haxx.se](https://curl.haxx.se/download.html))*
 
 
 # Create full country roads_only map and an address map for OsmAnd
 * Set the full path to your osmandmapcreator folder inside the script (OMC variable)
+* (Windows) Set the full pathtothe wintools folder (comes with this repository)
 * Create an empty directory like OBF (or whatever name)
 * cd into that directory OBF
-* start the script from the OBF folder with `<path_to>/full_address_map.sh <country>` where `country` like Italy, Netherlands, France, Germany
+* start the script from the OBF folder with:
+
+   * Linux:`<path_to>/full_address_map.sh <country>` where `country` like Italy, Netherlands, France, Germany
+   * Windows: `<disk>:\<path_to>\full_address_map.cmd <country>` where `country` like Italy, Netherlands, France, Germany
 
 After some time, depending on the beast you are running your script on, you will have in that OBF map a `<country>_road.obf` and a `<country>_address.obf`.<br>
 The `<country>_road.obf` is a full roads_only map of that country with routing, transport, POIs, reduced map and (!) addresses.<br>

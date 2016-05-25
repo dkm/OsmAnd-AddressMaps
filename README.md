@@ -1,45 +1,34 @@
 # OsmAnd-AddressMaps
 scripts to create address maps for OsmAnd
+This is based on the new functionality in OsmAndMapCreator in version newer than mid May 2016.
 
 
 # Requirements:
 ### General:
-A 64-bit Operating System with at least 6GB memory (Germany 10GB).
-OsmAndMapCreator and a recent java version. 
+* A 64-bit Operating System with up to 6GB free memory (for Germany).
+* OsmAndMapCreator later then mid May 2016 and a recent java version. 
+* awk, curl, unzip and wget
 Note that you need to be on a 64bit OS and that you need a 64bit java. The memory demands are always above 1.5GB which means a 64bit java environment.
 
 ### Linux users:
-Download the necessary tools via your package manager. You need osmconvert, osmfilter and wget.
-For Ubuntu and/or Debian that would be the package "osmctools" and "wget".
+Download the necessary tools via your package manager.
 
 ### Windows users:
-Download the repository via git clone or download the zip.
+* Not yet *
 
 
-# Create raw address map for OsmAndMapCreator
+# Create full country roads_only map and an address map for OsmAnd
+* Set the full path to your osmandmapcreator folder inside the script (OMC variable)
+* Create an empty directory like OBF (or whatever name)
+* cd into that directory OBF
+* start the script from the OBF folder with <path_to>/full_address_map.sh <country> where country like Italy, Netherlands, France, Germany
 
-Open a terminal (linux) or a command/dos box (windows) and go to the folder where you downloaded the scripts (and .exe files for windows)
+After some time, depending on the beast you are running your script on, you will have in that OBF map a <country>_road.obf and a <country>_address.obf. 
+The <country>_road.obf is a full roads_only map of that country with routing, transport, POIs, reduced map and (!) addresses.
+The <country>_address.obf only contains the full country addresses (obviously).
 
-Inside the directory you issue the following command in case you want a "France" address map.
+Notes: 
+- based on roads_only maps as you will never be able to run a full Germany or France map from your Fat32 SD-card as it is too big
+- also based on roads_only maps as the address data is the same but the maps are much smaller, thereby downloading much faster, taking up less space and processed much faster.
 
-Windows: 
-`create_address_rawmap.cmd france`
-
-Linux:
-`./create_address_rawmap.sh france`
-
-(Important: Use lowercase characters).
-
-After some time you should have a file like france-address.osm.pbf
-*(Note that the france-latest.osm.pbf file is the orginal complete raw map downloaded from geofabrik. You can remove that one)*
-
-
-# Create address map inside OsmAndMapCreator
-Make sure you have downloaded and installed OsmAndMapCreator.<br>
-Inside the script `OsmAndMapCreator.sh` or `OsmAndMapCreator.bat` make sure you change the value of the "-Xmx720M" to a value of at least 4096 like "-Xmx4096M" and preferably higher if memory allows (France "-Xmx6000M" and Germany "-Xmx10000M").
-
-Once the "raw" protobuf address map has been created by the scripts in the previous step, start OsmAndMapCreator.<br> **Only(!)** set the "build address index". All the other settings need to be "unchecked".<br>
-We only need these kind of address maps for the big countries which come as regional submaps. These regional submaps have addresses as well and a map part displaying those addresses. We now search using the country address map and the details are displayed via the regional map.
-
-Depending on the country size, speed of your pc and your disk (traditional harddisk or SSD) this will take 30 minutes to 12+ hours.
 

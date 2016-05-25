@@ -1,6 +1,6 @@
 # OsmAnd-AddressvMaps
 scripts to create address maps for OsmAnd<br>
-This is based on the new functionality in OsmAndMapCreator in version newer than mid May 2016.
+This is based on the new functionality in OsmAndMapCreator for versions newer than mid May 2016.
 
 
 # Requirements:

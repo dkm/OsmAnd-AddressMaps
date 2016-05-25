@@ -1,5 +1,5 @@
-# OsmAnd-AddressvMaps
-scripts to create address maps for OsmAnd<br>
+# OsmAnd-Address Maps
+Scripts to create address maps for OsmAnd<br>
 This is based on the new functionality in OsmAndMapCreator for versions newer than mid May 2016.
 
 

@@ -38,5 +38,6 @@ The `<country>_address.obf` only contains the full country addresses (obviously)
 Notes: 
 - based on roads_only maps as you will never be able to run a full Germany or France map from your Fat32 SD-card as it is too big.
 - also based on roads_only maps as the address data is the same but the maps are much smaller, thereby downloading much faster, taking up less space and processed much faster.
+- Italy for example can easily be run within 3.5GB memory but runs 3x as fast when given 5GB memory (2.2 GHz quad-core i7 with 3.5GB -> Italy 40-45 minutes; 6GB: Italy < 12 minutes, Germany < 45 minutes).
 
 

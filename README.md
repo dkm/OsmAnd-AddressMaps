@@ -6,13 +6,14 @@ This is based on the new functionality in OsmAndMapCreator for versions after mi
 # Requirements:
 ### General:
 * A 64-bit Operating System with up to 6GB free memory (for Germany).
-* OsmAndMapCreator later then mid May 2016 and a recent java version. 
+* OsmAndMapCreator version after mid May 2016
+* a recent java version. 
 * awk, curl, grep, sed, unzip and wget
 
 Note that you need to be on a 64bit OS and that you need a 64bit java. The memory demands are always above 1.5GB which means a 64bit java environment.
 
 ### Linux users:
-Download the necessary tools via your package manager and OsmAndMapCreator from http://download.osmand.net/latest-night-build/.
+Download the necessary tools via your package manager and download OsmAndMapCreator from http://download.osmand.net/latest-night-build/.
 
 ### Windows users:
 Download OsmAndMapCreator from http://download.osmand.net/latest-night-build/.<br>
@@ -22,7 +23,7 @@ The other tools are in the wintools folder.<br>
 
 # Create full country roads_only map and an address map for OsmAnd
 * Set the full path to your osmandmapcreator folder inside the script (OMC variable)
-* (Windows) Set the full pathtothe wintools folder (comes with this repository)
+* (Windows) Set the full path to the wintools folder (comes with this repository)
 * Create an empty directory like OBF (or whatever name)
 * cd into that directory OBF
 * start the script from the OBF folder with:
@@ -35,7 +36,7 @@ The `<country>_road.obf` is a full roads_only map of that country with routing, 
 The `<country>_address.obf` only contains the full country addresses (obviously).
 
 Notes: 
-- based on roads_only maps as you will never be able to run a full Germany or France map from your Fat32 SD-card as it is too big
+- based on roads_only maps as you will never be able to run a full Germany or France map from your Fat32 SD-card as it is too big.
 - also based on roads_only maps as the address data is the same but the maps are much smaller, thereby downloading much faster, taking up less space and processed much faster.
 
 

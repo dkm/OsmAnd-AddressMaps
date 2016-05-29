@@ -25,8 +25,11 @@ if [ "$#" -ne "1" ] ; then
         exit 0
 fi
 
+# First remove earlier created maps
+rm ${1}_${region}.road.obf ${1}_${region}.address.obf
+
 # Note: Some countries do have a full map and  regional maps. In that case it is not usefull to use this script
-listing=$(curl -s $URL | awk '{print $6}' | sed -e 's+href="++' -e 's+".*++' | grep ${1}.*road)
+listing=$(curl -s $URL | awk '{print $6}' | sed -e 's+href="++' -e 's+".*++' | grep ${1}.*${region}.*road)
 
 
 for i in $listing;
@@ -36,12 +39,15 @@ do
 	unzip -u $i;
 	rm $i;
 done
+
+# Only for the Netherlands
+rm Netherlands_europe*
 #######################################################
 # Now do the merging with utilities.sh
 cd ${OMC}
 echo ${OMC}
 
-java -Djava.util.logging.config.file=logging.properties -Xms64M -Xmx6144M -cp "$OMC/OsmAndMapCreator.jar:$OMC/lib/OsmAnd-core.jar:$OMC/lib/*.jar" net.osmand.MainUtilities merge-address-index ${CURDIR}/${1}_${region}.road.obf ${CURDIR}/${1}*.obf
+java -Djava.util.logging.config.file=logging.properties -Xms64M -Xmx3544M -cp "$OMC/OsmAndMapCreator.jar:$OMC/lib/OsmAnd-core.jar:$OMC/lib/*.jar" net.osmand.MainUtilities merge-address-index ${CURDIR}/${1}_${region}.road.obf ${CURDIR}/${1}*.obf
 
 ADDRESS_INDEX="$($INSP ${CURDIR}/${1}_${region}.road.obf 2>&1 | grep "Address data" | awk '{print $1}')"
 echo $ADDRESS_INDEX

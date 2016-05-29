@@ -8,7 +8,7 @@ REM Requirements: awk, curl, unzip, wget and OsmAndMapCreator (newer than mid Ma
 
 
 set URL="http://download.osmand.net/road-indexes/"
-region="europe"  # Change this to asia, south_america or whichever relevant region
+set region="europe"  # Change this to asia, south_america or whichever relevant region
 
 REM Specify full path to the tools
 set BINDIR="C:\Users\harryvanderwolf\Downloads\OpenStreetMap-Osmadm\OsmAnd-AddressMaps\wintools"
@@ -35,7 +35,7 @@ goto DONE
 set country=%1
 REM Note: Some countries do have a full map and  regional maps. In that case it is not usefull to use this script
 REM listing=$(curl -s $URL | awk '{print $6}' | sed -e 's+href="++' -e 's+".*++' | grep ${1}.*road | grep -v ${1}_europe)
-%BINDIR%\curl.exe -s %URL% | %BINDIR%\awk.exe "{print $6}" | %BINDIR%\sed.exe -e "s+href=\"++" -e "s+\".*++" | %BINDIR%\grep.exe %country%.*road > tmp_weblisting.txt
+%BINDIR%\curl.exe -s %URL% | %BINDIR%\awk.exe "{print $6}" | %BINDIR%\sed.exe -e "s+href=\"++" -e "s+\".*++" | %BINDIR%\grep.exe %country%_%region%.*road > tmp_weblisting.txt
 
 setlocal enabledelayedexpansion
 FOR /F "tokens=*" %%i in (tmp_weblisting.txt) DO (

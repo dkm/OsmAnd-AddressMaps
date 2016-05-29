@@ -8,7 +8,8 @@ REM Requirements: awk, curl, unzip, wget and OsmAndMapCreator (newer than mid Ma
 
 
 set URL="http://download.osmand.net/road-indexes/"
-set region="europe"  # Change this to asia, south_america or whichever relevant region
+REM Change region to asia, south_america or whichever relevant region
+set region="europe"
 
 REM Specify full path to the tools
 set BINDIR="C:\Users\harryvanderwolf\Downloads\OpenStreetMap-Osmadm\OsmAnd-AddressMaps\wintools"
@@ -34,8 +35,12 @@ goto DONE
 :process_country
 set country=%1
 REM Note: Some countries do have a full map and  regional maps. In that case it is not usefull to use this script
-REM listing=$(curl -s $URL | awk '{print $6}' | sed -e 's+href="++' -e 's+".*++' | grep ${1}.*road | grep -v ${1}_europe)
-%BINDIR%\curl.exe -s %URL% | %BINDIR%\awk.exe "{print $6}" | %BINDIR%\sed.exe -e "s+href=\"++" -e "s+\".*++" | %BINDIR%\grep.exe %country%_%region%.*road > tmp_weblisting.txt
+
+REM First remove earlier files
+del %country%_%region%.road.obf
+del %country%_%region%.address.obf
+
+%BINDIR%\curl.exe -s %URL% | %BINDIR%\awk.exe "{print $6}" | %BINDIR%\sed.exe -e "s+href=\"++" -e "s+\".*++" | %BINDIR%\grep.exe %country%.*%region%.*road > tmp_weblisting.txt
 
 setlocal enabledelayedexpansion
 FOR /F "tokens=*" %%i in (tmp_weblisting.txt) DO (
@@ -44,6 +49,8 @@ FOR /F "tokens=*" %%i in (tmp_weblisting.txt) DO (
 	del /F/Q %%i
 )
 del /F /Q tmp_weblisting.txt
+REM Only for the Netherlands
+del Netherlands_europe_2.road.obf 
 
 REM ######################################################
 REM Now do the merging with utilities.sh
@@ -52,7 +59,7 @@ echo %OMC%
 
 java.exe -Djava.util.logging.config.file=logging.properties -Xms64M -Xmx6144M -cp "./OsmAndMapCreator.jar;./lib/OsmAnd-core.jar;./lib/*.jar" net.osmand.MainUtilities merge-address-index %CURDIR%\%country%_%region%.road.obf %CURDIR%\%country%*.obf
 
-%INSP% %CURDIR%\%country%_%region%_road.obf | %BINDIR%\grep.exe "Address data %country%" | %BINDIR%\awk.exe "{print $1}" > address_index.txt
+%INSP% %CURDIR%\%country%_%region%.road.obf | %BINDIR%\grep.exe "Address data %country%" | %BINDIR%\awk.exe "{print $1}" > address_index.txt
 set /p ADDR_INDEX= < address_index.txt
 
 REM ######################################################

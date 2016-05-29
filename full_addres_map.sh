@@ -11,6 +11,8 @@ URL="http://download.osmand.net/road-indexes/"
 #Full path to the OsmAndMapCreator folder
 OMC="/media/harryvanderwolf/32GB/OpenStreetMap/OsmAndMapCreator"
 INSP="java -Djava.util.logging.config.file=logging.properties -Xms64M -Xmx512M -cp "./OsmAndMapCreator.jar:./lib/OsmAnd-core.jar:./lib/*.jar" net.osmand.binary.BinaryInspector"
+region="europe"  # Change this to asia, south_america or whichever relevant region
+
 
 CURDIR="$(pwd)"
 echo $CURDIR
@@ -39,12 +41,12 @@ done
 cd ${OMC}
 echo ${OMC}
 
-java -Djava.util.logging.config.file=logging.properties -Xms64M -Xmx6144M -cp "$OMC/OsmAndMapCreator.jar:$OMC/lib/OsmAnd-core.jar:$OMC/lib/*.jar" net.osmand.MainUtilities merge-address-index ${CURDIR}/${1}.obf ${CURDIR}/${1}*.obf
+java -Djava.util.logging.config.file=logging.properties -Xms64M -Xmx6144M -cp "$OMC/OsmAndMapCreator.jar:$OMC/lib/OsmAnd-core.jar:$OMC/lib/*.jar" net.osmand.MainUtilities merge-address-index ${CURDIR}/${1}_${region}.road.obf ${CURDIR}/${1}*.obf
 
-ADDRESS_INDEX="$($INSP ${CURDIR}/${1}.obf 2>&1 | grep "Address data" | awk '{print $1}')"
+ADDRESS_INDEX="$($INSP ${CURDIR}/${1}_${region}.road.obf 2>&1 | grep "Address data" | awk '{print $1}')"
 echo $ADDRESS_INDEX
 
 #######################################################
 # Now extract the address map into a new <country>_address.obf
-$INSP -c ${CURDIR}/${1}_address.obf ${CURDIR}/${1}.obf +${ADDRESS_INDEX}
+$INSP -c ${CURDIR}/${1}_${region}.address.obf ${CURDIR}/${1}_${region}.road.obf +${ADDRESS_INDEX}
 

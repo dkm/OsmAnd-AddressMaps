@@ -8,6 +8,8 @@ REM Requirements: awk, curl, unzip, wget and OsmAndMapCreator (newer than mid Ma
 
 
 set URL="http://download.osmand.net/road-indexes/"
+region="europe"  # Change this to asia, south_america or whichever relevant region
+
 REM Specify full path to the tools
 set BINDIR="C:\Users\harryvanderwolf\Downloads\OpenStreetMap-Osmadm\OsmAnd-AddressMaps\wintools"
 REM Specify full path to the OsmAndMapCreator folder
@@ -48,14 +50,14 @@ REM Now do the merging with utilities.sh
 cd %OMC%
 echo %OMC%
 
-java.exe -Djava.util.logging.config.file=logging.properties -Xms64M -Xmx6144M -cp "./OsmAndMapCreator.jar;./lib/OsmAnd-core.jar;./lib/*.jar" net.osmand.MainUtilities merge-address-index %CURDIR%\%country%_road.obf %CURDIR%\%country%*.obf
+java.exe -Djava.util.logging.config.file=logging.properties -Xms64M -Xmx6144M -cp "./OsmAndMapCreator.jar;./lib/OsmAnd-core.jar;./lib/*.jar" net.osmand.MainUtilities merge-address-index %CURDIR%\%country%_%region%.road.obf %CURDIR%\%country%*.obf
 
-%INSP% %CURDIR%\%country%_road.obf | %BINDIR%\grep.exe "Address data %country%" | %BINDIR%\awk.exe "{print $1}" > address_index.txt
+%INSP% %CURDIR%\%country%_%region%_road.obf | %BINDIR%\grep.exe "Address data %country%" | %BINDIR%\awk.exe "{print $1}" > address_index.txt
 set /p ADDR_INDEX= < address_index.txt
 
 REM ######################################################
 REM Now extract the address map into a new <country>_address.obf
-%INSP% -c %CURDIR%\%country%_address.obf %CURDIR%\%country%_road.obf +%ADDR_INDEX%
+%INSP% -c %CURDIR%\%country%_%region%.address.obf %CURDIR%\%country%_%region%.road.obf +%ADDR_INDEX%
 del /F /Q address_index.txt
 
 cd %CURDIR%

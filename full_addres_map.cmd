@@ -57,7 +57,7 @@ REM Now do the merging with utilities.sh
 cd %OMC%
 echo %OMC%
 
-java.exe -Djava.util.logging.config.file=logging.properties -Xms64M -Xmx6144M -cp "./OsmAndMapCreator.jar;./lib/OsmAnd-core.jar;./lib/*.jar" net.osmand.MainUtilities merge-address-index %CURDIR%\%country%_%region%.road.obf %CURDIR%\%country%*.obf
+java.exe -Djava.util.logging.config.file=logging.properties -Xms64M -Xmx6144M -cp "./OsmAndMapCreator.jar;./lib/OsmAnd-core.jar;./lib/*.jar" net.osmand.MainUtilities merge-index %CURDIR%\%country%_%region%.road.obf %CURDIR%\%country%*.obf
 
 %INSP% %CURDIR%\%country%_%region%.road.obf | %BINDIR%\grep.exe "Address data %country%" | %BINDIR%\awk.exe "{print $1}" > address_index.txt
 set /p ADDR_INDEX= < address_index.txt

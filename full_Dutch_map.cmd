@@ -26,7 +26,7 @@ echo %CURDIR%
 
 REM Specify country as option to this script
 if "%1"=="" (
-	set country="Netherlands"
+	set country=Netherlands
 	goto process_country
 )
 REM if the script got to here there was obviously a country specified

@@ -46,3 +46,8 @@ Notes:
 - Italy for example can easily be run within 3.5GB memory but runs 3x as fast when given 5GB memory (2.2 GHz quad-core i7 with 3.5GB -> Italy 40-45 minutes; 6GB: Italy < 12 minutes, Germany < 45 minutes).
 
 
+# Create full Dutch map
+As mentioned above: most countries that are split up in regional maps are simply too big for a single map file.<BR>
+The script "full_Dutch_map.cmd" creates a full Dutch map including the full address data. The script also works for example for Italy and Japan but not for France and Germany as the created submaps already exceed 2Gb which java does not allow and which will not function anyawy on a FAT formatted SDcard as the filesize limit is 2GB.<br>
+Simply starting the script without parameters will create the Dutch map.<br>
+Starting the script like `full_Dutch_map Italy` will create the full Italy map.

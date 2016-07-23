@@ -17,7 +17,7 @@ Download the necessary tools via your package manager and download OsmAndMapCrea
 
 ### Windows users:
 Download OsmAndMapCreator from http://download.osmand.net/latest-night-build/.<br>
-Install python (for example from [python.org](https://www.python.org/downloads/windows/)<br>
+Install python (for example from [python.org](https://www.python.org/downloads/windows/))<br>
 The other tools are in the wintools folder.<br>
 *(awk and grep come from [GnuWin packages](http://gnuwin32.sourceforge.net/packages.html).)*
 

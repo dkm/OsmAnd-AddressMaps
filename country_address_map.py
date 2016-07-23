@@ -3,7 +3,7 @@
 
 # Version 1.0, 201607, Harry van der Wolf
 
-import os, sys, platform, re, subprocess, zipfile
+import os, sys, platform, re, zipfile
 if sys.version_info<(3,0,0):
 	# Fall back to Python 2's urllib2
 	from urllib2 import urlopen
@@ -72,8 +72,13 @@ for line in lines:
 		subline = line.split('road.obf.zip">')
 		subline = subline[1].split('</a>')
 		#print(subline[0] + "\n\n")
+		region = subline[0].split('_2.road.obf.zip')
+		#print(region[0])
+		region = region[0].rsplit("_",1)
+		#print(region[1])
+		REGION = region[1]
 		# Sometimes we have a full country roads map. We can't use that here
-		if subline[0]!= COUNTRY + "_europe_2.road.obf.zip":
+		if subline[0]!= COUNTRY + "_" + REGION + "_2.road.obf.zip":
 			map_url = URL + subline[0]
 			mapdownload = urlopen( map_url)
 			print("\n== Downloading " + map_url)
@@ -103,5 +108,5 @@ for line in lines:
 #	os.system
 print("\n\n== Now merge the separate address maps into a new <country>.address.obf ==")
 os.chdir(OMC)
-os.system('java -Djava.util.logging.config.file=logging.properties -Xms64M -Xmx4144M -cp ' + OSMCpath + ' net.osmand.MainUtilities merge-index ' + os.path.join(WORKDIR, (COUNTRY + "_europe.address.obf") ) + ' ' + WORKDIR + path_sep + '*_address.obf')
-#purge(WORKDIR, '_address.obf')
+os.system('java -Djava.util.logging.config.file=logging.properties -Xms64M -Xmx4144M -cp ' + OSMCpath + ' net.osmand.MainUtilities merge-index ' + os.path.join(WORKDIR, (COUNTRY + "_" +  REGION + ".address.obf") ) + ' ' + WORKDIR + path_sep + '*_address.obf')
+purge(WORKDIR, '_address.obf')

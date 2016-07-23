@@ -52,6 +52,7 @@ FOR /F "tokens=*" %%i in (tmp_weblisting.txt) DO (
 del /F /Q tmp_weblisting.txt
 REM Only for the Netherlands
 del Netherlands_europe_2.obf 
+del England_europe_2.obf
 
 REM ######################################################
 REM Now do the merging with utilities.sh

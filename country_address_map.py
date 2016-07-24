@@ -14,7 +14,10 @@ else:
 #### Some neccessary variables ####
 URL = "http://download.osmand.net/road-indexes/"
 #Full path to the OsmAndMapCreator folder
-OMC = "/media/harryvanderwolf/32GB/OpenStreetMap/OsmAndMapCreator"
+# For example Linux or Mac OS/X
+#OMC = "/media/harryvanderwolf/32GB/OpenStreetMap/OsmAndMapCreator"
+# For example for windows; Note the double backslashes
+OMC = "C:\\Users\\harryvanderwolf\\Downloads\\OpenStreetMap-Osmadm\\OsmAndMapCreator"
 OSplatform = platform.system()
 if OSplatform == "Windows":
 	path_sep = "\\"
@@ -48,14 +51,14 @@ realfile_dir  = os.path.dirname(os.path.abspath(__file__))
 
 # Use dictionary for our variables
 var_dict = {}
-var_dict['TOOLSDIR'] = os.path.join(realfile_dir, "tools")
+WINTOOLS = os.path.join(realfile_dir, "wintools")
 WORKDIR = os.path.join(realfile_dir, "workfiles")
 if not os.path.exists(WORKDIR):
     os.makedirs(WORKDIR)
 
 #clean the WORKDIR
-purge(WORKDIR, 'obf')
-
+purge(WORKDIR, '_address.obf')
+purge(WORKDIR, '.zip')
 
 
 response = urlopen( URL)
@@ -96,17 +99,19 @@ for line in lines:
 			print("\n== Extract address segment from " + mapfile)
 			addressfile = mapfile.replace("2.road", "address")
 			os.chdir(OMC)
-			os.system(INSP + " " + os.path.join(WORKDIR, mapfile) + " 2>\&1 | grep \"Address data\" | awk '{print $1}' > " + os.path.join(WORKDIR, "index.txt"))
+			if OSplatform == "Windows":
+				os.system(INSP + " " + os.path.join(WORKDIR, mapfile) + " 2>&1 | " +  os.path.join(WINTOOLS, "grep.exe") + " \"Address data\" | " +  os.path.join(WINTOOLS, "awk.exe") + " \"{print $1}\" > " + os.path.join(WORKDIR, "index.txt"))
+			else:
+				os.system(INSP + " " + os.path.join(WORKDIR, mapfile) + " 2>\&1 | grep \"Address data\" | awk '{print $1}' > " + os.path.join(WORKDIR, "index.txt"))
 			with open(os.path.join(WORKDIR, "index.txt"), "r") as indexfile:
 				INDEX = indexfile.read()
 			#print(INSP + " -c "  + os.path.join(WORKDIR, addressfile) + " " + os.path.join(WORKDIR, mapfile) + " +" + INDEX)
 			os.system( INSP + " -c "  + os.path.join(WORKDIR, addressfile) + " " + os.path.join(WORKDIR, mapfile) + " +" + INDEX)
 			os.remove( mapfile )
+			os.remove(os.path.join(WORKDIR, "index.txt"))
 # We are done with downloading, unzipping and extracting all address segments from the road files
 # Now extract all address segments from the road file
-#for map in map_list:
-#	os.system
 print("\n\n== Now merge the separate address maps into a new <country>.address.obf ==")
 os.chdir(OMC)
-os.system('java -Djava.util.logging.config.file=logging.properties -Xms64M -Xmx4144M -cp ' + OSMCpath + ' net.osmand.MainUtilities merge-index ' + os.path.join(WORKDIR, (COUNTRY + "_" +  REGION + ".address.obf") ) + ' ' + WORKDIR + path_sep + '*_address.obf')
+os.system('java -Djava.util.logging.config.file=logging.properties -Xms64M -Xmx7144M -cp ' + OSMCpath + ' net.osmand.MainUtilities merge-index ' + os.path.join(WORKDIR, (COUNTRY + "_" +  REGION + ".address.obf") ) + ' ' + WORKDIR + path_sep + '*_address.obf')
 purge(WORKDIR, '_address.obf')

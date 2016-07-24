@@ -1,6 +1,6 @@
 # OsmAnd-Address Maps
 Script to create address maps for OsmAnd<br>
-This is based on the new functionality in OsmAndMapCreator for versions after mid May 2016.<br>
+This is based on the new functionality in OsmAndMapCreator for versions after mid June 2016.<br>
 (for previous github V1 version see [here](https://github.com/hvdwolf/OsmAnd-AddressMaps/tree/V1), for the previous github V2 version see [here](https://github.com/hvdwolf/OsmAnd-AddressMaps/tree/V2) or simply toggle the  "branch" button).<br>
 
 # Requirements:

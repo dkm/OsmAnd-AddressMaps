@@ -5,7 +5,7 @@ This is based on the new functionality in OsmAndMapCreator for versions after mi
 
 # Requirements:
 ### General:
-* A 64-bit Operating System with up to 6GB free memory (for Germany).
+* A 64-bit Operating System with up to 7GB free memory (for Germany).
 * OsmAndMapCreator version after mid May 2016
 * a recent java version. 
 * awk, grep (windows tools in the repo)

@@ -27,7 +27,7 @@ The other tools are in the wintools folder.<br>
 
    * Linux:`<path_to>/country_address_map.py <country>`
    * Windows: `python <disk>:\<path_to>\country_address_map.py <country>`<br>
-   where `country` like Italy, Netherlands, France, Germany, Argentina, Brazil, Australia, Russia or .....
+   where `country` like Italy, Netherlands, France, Germany, Canada, Brazil, Australia, Russia or .....
 
 After some time, depending on the beast you are running your script on, you will have in the `workfiles` folder a  `<country>_<region>.address.obf`.<br>
 The `<country>_<region>.address.obf` only contains the full country addresses (obviously).

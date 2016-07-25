@@ -15,9 +15,10 @@ else:
 URL = "http://download.osmand.net/road-indexes/"
 #Full path to the OsmAndMapCreator folder
 # For example Linux or Mac OS/X
-#OMC = "/media/harryvanderwolf/32GB/OpenStreetMap/OsmAndMapCreator"
+OMC = "/media/harryvanderwolf/32GB/OpenStreetMap/OsmAndMapCreator"
 # For example for windows; Note the double backslashes
-OMC = "C:\\Users\\harryvanderwolf\\Downloads\\OpenStreetMap-Osmadm\\OsmAndMapCreator"
+#OMC = "C:\\Users\\harryvanderwolf\\Downloads\\OpenStreetMap-Osmadm\\OsmAndMapCreator"
+
 OSplatform = platform.system()
 if OSplatform == "Windows":
 	path_sep = "\\"
@@ -40,8 +41,8 @@ def purge(dir, pattern):
 ### Start the stuff
 # Check whether we have at least on country
 if len(sys.argv) < 2:
-	print("\n\n== You need to specify 1 or more countries")
-	print(" Where country is Germany or France\n\n")
+	print("\n\n== You need to specify a country")
+	print(" Where country is for example Italy, Netherlands, France, Germany, Canada, Brazil, Australia, Russia, Us ...\n\n")
 	sys.exit()
 COUNTRY = sys.argv[1]
 
@@ -57,7 +58,7 @@ if not os.path.exists(WORKDIR):
     os.makedirs(WORKDIR)
 
 #clean the WORKDIR
-purge(WORKDIR, '_address.obf')
+purge(WORKDIR, '-address.obf')
 purge(WORKDIR, '.zip')
 
 
@@ -97,7 +98,7 @@ for line in lines:
 			os.remove( mapfile )
 			mapfile = mapfile.replace(".zip", "")
 			print("\n== Extract address segment from " + mapfile)
-			addressfile = mapfile.replace("2.road", "address")
+			addressfile = mapfile.replace("_2.road", "-address")
 			os.chdir(OMC)
 			if OSplatform == "Windows":
 				os.system(INSP + " " + os.path.join(WORKDIR, mapfile) + " 2>&1 | " +  os.path.join(WINTOOLS, "grep.exe") + " \"Address data\" | " +  os.path.join(WINTOOLS, "awk.exe") + " \"{print $1}\" > " + os.path.join(WORKDIR, "index.txt"))
@@ -111,7 +112,7 @@ for line in lines:
 			os.remove(os.path.join(WORKDIR, "index.txt"))
 # We are done with downloading, unzipping and extracting all address segments from the road files
 # Now extract all address segments from the road file
-print("\n\n== Now merge the separate address maps into a new <country>.address.obf ==")
+print("\n\n== Now merge the separate address maps into a new <country>_address.obf ==")
 os.chdir(OMC)
-os.system('java -Djava.util.logging.config.file=logging.properties -Xms64M -Xmx7144M -cp ' + OSMCpath + ' net.osmand.MainUtilities merge-index ' + os.path.join(WORKDIR, (COUNTRY + "_" +  REGION + ".address.obf") ) + ' ' + WORKDIR + path_sep + '*_address.obf')
-purge(WORKDIR, '_address.obf')
+os.system('java -Djava.util.logging.config.file=logging.properties -Xms64M -Xmx7144M -cp ' + OSMCpath + ' net.osmand.MainUtilities merge-index ' + os.path.join(WORKDIR, (COUNTRY + "_" +  REGION + "_address.obf") ) + ' ' + WORKDIR + path_sep + '*-address.obf')
+purge(WORKDIR, '-address.obf')
